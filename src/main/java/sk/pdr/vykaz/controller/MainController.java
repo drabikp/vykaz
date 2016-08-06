@@ -22,7 +22,7 @@ public class MainController {
 	
 	@PostConstruct
 	public void init() {
-		
+		//temp
 		activityService.listAll();
 	}
 }
