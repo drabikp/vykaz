@@ -25,6 +25,8 @@ public class ProjectServiceImpl extends GenericService<Project> implements Proje
 		this.projectDAO = projectDAO;
 	}
 	
-	
+	public ProjectDAO getProjectDAO() {
+		return projectDAO;
+	}
 
 }

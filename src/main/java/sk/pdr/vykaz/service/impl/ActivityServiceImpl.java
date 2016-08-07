@@ -3,7 +3,6 @@ package sk.pdr.vykaz.service.impl;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +20,7 @@ public class ActivityServiceImpl extends GenericService<Activity> implements Act
 	public ActivityServiceImpl() {}
 	
 	@Autowired
-	public ActivityServiceImpl(/*@Qualifier("activityDAO") */GenericDAO<Activity> dao) {
+	public ActivityServiceImpl(GenericDAO<Activity> dao) {
 		super(dao);
 		this.setActivityDAO((ActivityDAO) dao);
 	}
