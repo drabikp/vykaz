@@ -6,7 +6,8 @@ public class Activity extends AbstractEntity {
 	private LocalDateTime start;
 	private LocalDateTime end;
 	private String name;
-	private long projectId;
+	//private long projectId;
+	private Project project;
 	
 	public Activity() {}
 	
@@ -15,7 +16,7 @@ public class Activity extends AbstractEntity {
 		this.start = start;
 		this.end = end;
 		this.name = name;
-		this.projectId = projectId;
+		//this.projectId = projectId;
 	}
 
 	public LocalDateTime getStart() {
@@ -42,11 +43,19 @@ public class Activity extends AbstractEntity {
 		this.name = name;
 	}
 
-	public long getProjectId() {
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	/*public long getProjectId() {
 		return projectId;
 	}
 
 	public void setProjectId(long projectId) {
 		this.projectId = projectId;
-	}
+	}*/
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import sk.pdr.vykaz.model.AbstractEntity;
 
-@Repository("GenericDAO")
+@Repository
 public abstract class GenericDAO<T extends AbstractEntity> implements AbstractDAO<T> {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -24,6 +24,14 @@ public abstract class GenericDAO<T extends AbstractEntity> implements AbstractDA
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<T> listAll() {
 		return (List<T>) getSession().createQuery("from " + entityClass.getName()).list();
+	}
+	
+	public void update(T item) {
+		if (item.getId() != null && getSession().get(entityClass, item.getId()) != null) {
+			getSession().update(item);
+		} else {
+			item.setId((Long) getSession().save(item)); 
+		}
 	}
 
 	public SessionFactory getSessionFactory() {

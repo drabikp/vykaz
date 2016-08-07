@@ -2,6 +2,7 @@ package sk.pdr.vykaz.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +11,7 @@ import sk.pdr.vykaz.dao.AbstractDAO;
 @Service
 public abstract class GenericService<T> implements AbstractService<T> {
 
-	//@Autowired
+	@Autowired
 	private AbstractDAO<T> abstractDao;
 	
 	public GenericService() {
@@ -24,6 +25,11 @@ public abstract class GenericService<T> implements AbstractService<T> {
 	@Transactional
 	public List<T> listAll() {
 		return abstractDao.listAll();
+	}
+	
+	@Transactional
+	public void update(T item) {
+		abstractDao.update(item);
 	}
 
 	public AbstractDAO<T> getAbstractDao() {

@@ -11,7 +11,7 @@
 		<property name="name" type="string">
             <column name="name" length="40" not-null="true" unique="true" />
         </property>
-        <bag name="projectList" table="activity" inverse="true" fetch="select">
+        <bag name="projectList" table="activity" inverse="true" fetch="select" cascade="all">
 			<key>
 				<column name="clientId" not-null="true"/>
 			</key>
@@ -33,7 +33,7 @@
         <property name="end" type="java.time.LocalDateTime">
             <column name="end_" not-null="false" unique="false" />
         </property>
-        <many-to-one name="projectId" class="sk.pdr.vykaz.model.Project" fetch="select">
+        <many-to-one name="project" class="sk.pdr.vykaz.model.Project" fetch="select">
         	<column name="projectId" not-null="true"/>
         </many-to-one>
 	</class>
@@ -43,13 +43,16 @@
 			<column name="projectId"/>
 			<generator class="identity"></generator>
 		</id>
-		<bag name="activityList" table="activity" inverse="true" fetch="select">
+		<property name="name" type="string">
+            <column name="name" length="40" not-null="true" unique="true" />
+        </property>
+		<bag name="activityList" table="activity" inverse="true" fetch="select" cascade="all">
 			<key>
 				<column name="projectId" not-null="true"/>
 			</key>
 			<one-to-many class="sk.pdr.vykaz.model.Activity"/>			
 		</bag>
-		<many-to-one name="clientId" class="sk.pdr.vykaz.model.Client" fetch="select">
+		<many-to-one name="client" class="sk.pdr.vykaz.model.Client" fetch="select">
         	<column name="clientId" not-null="true"/>
         </many-to-one>
 	</class>

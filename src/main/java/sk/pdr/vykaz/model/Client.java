@@ -1,5 +1,6 @@
 package sk.pdr.vykaz.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client extends AbstractEntity {	
@@ -29,5 +30,22 @@ public class Client extends AbstractEntity {
 
 	public void setProjectList(List<Project> projectList) {
 		this.projectList = projectList;
+	}
+	
+	public void addProject(Project p) {
+		if (projectList == null) {
+			projectList = new ArrayList<>();
+		}
+		p.setClient(this);
+		projectList.add(p);
+	}
+	
+	public void addProjects(List<Project> p) {
+		if (projectList == null) {
+			projectList = new ArrayList<>();
+		}
+		for (Project t: p) {
+			addProject(t);
+		}
 	}
 }

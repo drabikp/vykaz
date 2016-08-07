@@ -6,6 +6,6 @@ import sk.pdr.vykaz.dao.ActivityDAO;
 import sk.pdr.vykaz.dao.GenericDAO;
 import sk.pdr.vykaz.model.Activity;
 
-@Repository("activityDAO")
+@Repository
 public class ActivityDAOImpl extends GenericDAO<Activity> implements ActivityDAO {
 }

@@ -1,19 +1,19 @@
 package sk.pdr.vykaz.model;
 
 public abstract class AbstractEntity {
-	private long id;
+	private Long id;
 	
 	public AbstractEntity() {}
 	
-	public AbstractEntity(long id) {
+	public AbstractEntity(Long id) {
 		this.id = id;
 	}
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}	
 }
