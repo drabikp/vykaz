@@ -26,7 +26,7 @@
 			<generator class="identity"></generator>
 		</id>
 		<property name="name" type="string">
-            <column name="name" length="40" not-null="true" unique="true" />
+            <column name="name" length="40" not-null="true" unique="false" />
         </property>
         <property name="start" type="java.time.LocalDateTime">
             <column name="start_" not-null="true" unique="false" />
@@ -34,7 +34,7 @@
         <property name="end" type="java.time.LocalDateTime">
             <column name="end_" not-null="false" unique="false" />
         </property>
-        <many-to-one name="project" class="sk.pdr.vykaz.model.Project" fetch="select">
+        <many-to-one name="project" class="sk.pdr.vykaz.model.Project" fetch="join">
         	<column name="projectId" not-null="true"/>
         </many-to-one>
 	</class>
@@ -53,7 +53,7 @@
 			</key>
 			<one-to-many class="sk.pdr.vykaz.model.Activity"/>			
 		</bag>
-		<many-to-one name="client" class="sk.pdr.vykaz.model.Client" fetch="select">
+		<many-to-one name="client" class="sk.pdr.vykaz.model.Client" fetch="join">
         	<column name="clientId" not-null="true"/>
         </many-to-one>
 	</class>
