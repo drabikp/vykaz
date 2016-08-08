@@ -1,8 +1,10 @@
 package sk.pdr.vykaz.dao;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +29,21 @@ public abstract class GenericDAO<T extends AbstractEntity> implements AbstractDA
 	}
 	
 	public void update(T item) {
-		if (item.getId() != null && getSession().get(entityClass, item.getId()) != null) {
+		/*if (item.getId() != null && getSession().get(entityClass, item.getId()) != null) {
 			getSession().update(item);
+			//TODO: check if merge method would be more suitable
 		} else {
 			item.setId((Long) getSession().save(item)); 
-		}
+		}*/
+		getSession().saveOrUpdate(item);
+	}
+	
+	public T get(Long id) {
+		return getSession().get(entityClass, id);
+	}
+	
+	public void delete(T item) {
+		getSession().delete(item);
 	}
 
 	public SessionFactory getSessionFactory() {

@@ -2,6 +2,7 @@ package sk.pdr.vykaz.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import sk.pdr.vykaz.dao.GenericDAO;
 import sk.pdr.vykaz.dao.ProjectDAO;
@@ -27,6 +28,11 @@ public class ProjectServiceImpl extends GenericService<Project> implements Proje
 	
 	public ProjectDAO getProjectDAO() {
 		return projectDAO;
+	}
+	
+	@Transactional
+	public Project getWithActivities(Long id) {
+		return projectDAO.getWithActivities(id);
 	}
 
 }

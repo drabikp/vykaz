@@ -10,6 +10,10 @@ public class Project extends AbstractEntity {
 	private Client client;
 	
 	public Project() {}
+	
+	public Project(String name) {
+		this.name = name;
+	}
 
 	public List<Activity> getActivityList() {
 		return activityList;

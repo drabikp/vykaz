@@ -16,6 +16,10 @@ public class Client extends AbstractEntity {
 		this.name = name;
 	}
 	
+	public Client(String name) {
+		this.name = name;
+	}
+	
 	public String getName() {
 		return name;
 	}
