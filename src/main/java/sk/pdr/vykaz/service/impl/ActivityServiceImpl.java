@@ -34,12 +34,12 @@ public class ActivityServiceImpl extends GenericService<Activity> implements Act
 	}
 	
 	@Transactional
-	public void add(String name, LocalDateTime start, LocalDateTime end, Project project) {
+	public void add(String name, /*LocalDateTime start, LocalDateTime end, */Project project) {
 		Activity item = new Activity();
 		item.setName(name);
-		item.setEnd(end);
+		/*item.setEnd(end);
 		item.setStart(start);
-		item.setProject(project);
+		*/item.setProject(project);
 		activityDAO.update(item);
 	}
 

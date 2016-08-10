@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import sk.pdr.vykaz.model.Activity;
+import sk.pdr.vykaz.model.ActivityTime;
 import sk.pdr.vykaz.model.Client;
 import sk.pdr.vykaz.model.Project;
 import sk.pdr.vykaz.service.ActivityService;
@@ -35,6 +36,9 @@ public class MainController {
 	
 	private Activity selectedActivity;
 	private List<Activity> activityList;
+	
+	private ActivityTime selectedActivityTime;
+	private List<ActivityTime> activityTimeList;
 	
 	private String newClientName;
 	private String newProjectName;
@@ -142,6 +146,18 @@ public class MainController {
 	}
 	public void setNewProjectName(String newProjectName) {
 		this.newProjectName = newProjectName;
+	}
+	public List<ActivityTime> getActivityTimeList() {
+		return activityTimeList;
+	}
+	public void setActivityTimeList(List<ActivityTime> activityTimeList) {
+		this.activityTimeList = activityTimeList;
+	}
+	public ActivityTime getSelectedActivityTime() {
+		return selectedActivityTime;
+	}
+	public void setSelectedActivityTime(ActivityTime selectedActivityTime) {
+		this.selectedActivityTime = selectedActivityTime;
 	}
 	
 	

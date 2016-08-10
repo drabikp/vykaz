@@ -1,25 +1,28 @@
 package sk.pdr.vykaz.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Activity extends AbstractEntity {
-	private LocalDateTime start;
-	private LocalDateTime end;
+	/*private LocalDateTime start;
+	private LocalDateTime end;*/
 	private String name;
 	//private long projectId;
 	private Project project;
+	private List<ActivityTime> activityTimeList;
 	
 	public Activity() {}
 	
-	public Activity(long id, LocalDateTime start, LocalDateTime end, String name, long projectId) {
+	public Activity(long id, /*LocalDateTime start, LocalDateTime end, */String name, long projectId) {
 		super(id);
-		this.start = start;
+		/*this.start = start;
 		this.end = end;
-		this.name = name;
+		*/this.name = name;
 		//this.projectId = projectId;
 	}
 
-	public LocalDateTime getStart() {
+/*	public LocalDateTime getStart() {
 		return start;
 	}
 
@@ -33,7 +36,7 @@ public class Activity extends AbstractEntity {
 
 	public void setEnd(LocalDateTime end) {
 		this.end = end;
-	}
+	}*/
 
 	public String getName() {
 		return name;
@@ -51,6 +54,14 @@ public class Activity extends AbstractEntity {
 		this.project = project;
 	}
 
+	public List<ActivityTime> getActivityTimeList() {
+		return activityTimeList;
+	}
+
+	public void setActivityList(List<ActivityTime> activityTimeList) {
+		this.activityTimeList = activityTimeList;
+	}
+
 	/*public long getProjectId() {
 		return projectId;
 	}
@@ -58,4 +69,12 @@ public class Activity extends AbstractEntity {
 	public void setProjectId(long projectId) {
 		this.projectId = projectId;
 	}*/
+	
+	public void addActivityTime(LocalDateTime start, LocalDateTime end) {
+		ActivityTime at = new ActivityTime(start, end);
+		if (activityTimeList == null) {
+			activityTimeList = new ArrayList<ActivityTime>();
+		}
+		activityTimeList.add(at);
+	}
 }

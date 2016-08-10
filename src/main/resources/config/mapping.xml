@@ -28,12 +28,14 @@
 		<property name="name" type="string">
             <column name="name" length="40" not-null="true" unique="false" />
         </property>
-        <property name="start" type="java.time.LocalDateTime">
-            <column name="start_" not-null="true" unique="false" />
-        </property>
-        <property name="end" type="java.time.LocalDateTime">
-            <column name="end_" not-null="false" unique="false" />
-        </property>
+        
+        <bag name="activityTimeList" table="activity_time" inverse="true" fetch="select" cascade="all">
+			<key>
+				<column name="activityId" not-null="true"/>
+			</key>
+			<one-to-many class="sk.pdr.vykaz.model.ActivityTime"/>			
+		</bag>
+        
         <many-to-one name="project" class="sk.pdr.vykaz.model.Project" fetch="join">
         	<column name="projectId" not-null="true"/>
         </many-to-one>
@@ -55,6 +57,22 @@
 		</bag>
 		<many-to-one name="client" class="sk.pdr.vykaz.model.Client" fetch="join">
         	<column name="clientId" not-null="true"/>
+        </many-to-one>
+	</class>
+	
+	<class name="sk.pdr.vykaz.model.ActivityTime" table="activity_time">
+		<id name="id" type="java.lang.Long">
+			<column name="activityId"/>
+			<generator class="identity"></generator>
+		</id>
+		<property name="start" type="java.time.LocalDateTime">
+            <column name="start_" not-null="true" unique="false" />
+        </property>
+        <property name="end" type="java.time.LocalDateTime">
+            <column name="end_" not-null="false" unique="false" />
+        </property>
+        <many-to-one name="activity" class="sk.pdr.vykaz.model.Activity" fetch="join">
+        	<column name="activityId" not-null="true"/>
         </many-to-one>
 	</class>
 </hibernate-mapping>
